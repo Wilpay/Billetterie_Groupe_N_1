@@ -21,7 +21,7 @@ public class BilletterieG1 {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        Jdbc.creer("com.mysql.jdbc.Driver", "jdbc:mysql:", "//localhost/", "festival", "root", "");
+        Jdbc.creer("com.mysql.jdbc.Driver", "jdbc:mysql:", "//localhost/", "festival2", "root", "joliverie");
         //Jdbc.creer("com.mysql.jdbc.Driver", "jdbc:mysql://", "//localhost/", Reader.readString("BDD_name"), Reader.readString("BDD_login"), Reader.readString("BDD_mdp"));
         try {
             Jdbc.getInstance().connecter();
