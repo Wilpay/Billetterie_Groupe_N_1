@@ -3,9 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  localhost
--- Généré le :  Mer 28 Mars 2018
+-- Généré le :  Mer 28 Mars 2018 à 17:26
 -- Version du serveur :  5.7.21-0ubuntu0.16.04.1
--- Version de PHP :  7.0.25-0ubuntu0.16.04.1
+-- Version de PHP :  7.0.28-0ubuntu0.16.04.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -19,6 +19,8 @@ SET time_zone = "+00:00";
 --
 -- Base de données :  `festival2`
 --
+CREATE DATABASE IF NOT EXISTS `festival2` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+USE `festival2`;
 
 -- --------------------------------------------------------
 
@@ -221,7 +223,7 @@ INSERT INTO `Representation` (`id`, `date_rep`, `id_lieu`, `id_groupe`, `heureDe
 (3, '2017-07-11', 3, 'g035', '12:00:00', '13:00:00', 2000),
 (4, '2017-07-12', 1, 'g008', '20:30:00', '22:00:00', 450),
 (5, '2017-07-12', 1, 'g009', '22:15:00', '23:30:00', 450),
-(6, '2017-07-13', 2, 'g041', '20:30:00', '22:00:00', 250),
+(6, '2017-07-13', 2, 'g041', '20:30:00', '22:00:00', 243),
 (7, '2017-07-14', 1, 'g020', '19:30:00', '21:00:00', 450),
 (8, '2017-07-14', 1, 'g022', '21:15:00', '23:00:00', 450),
 (9, '2017-07-14', 3, 'g010', '14:00:00', '14:30:00', 2000),
