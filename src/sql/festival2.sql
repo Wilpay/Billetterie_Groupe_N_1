@@ -7,20 +7,32 @@
 -- Version du serveur :  5.7.21-0ubuntu0.16.04.1
 -- Version de PHP :  7.0.28-0ubuntu0.16.04.1
 
+--
+-- Base de données :  `festival2`
+--
+CREATE DATABASE IF NOT EXISTS `festival2` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+USE `festival2`;
+
+
+DROP TABLE IF EXISTS Attribution;
+DROP TABLE IF EXISTS Etablissement;
+DROP TABLE IF EXISTS Groupe;
+DROP TABLE IF EXISTS Lieu;
+DROP TABLE IF EXISTS Offre;
+DROP TABLE IF EXISTS Representation;
+DROP TABLE IF EXISTS TypeChambre;
+
+
+GRANT ALL ON festival2 . * TO 'groupe1'@'localhost' IDENTIFIED BY 'groupe1';
+
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
-
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8mb4 */;
 
---
--- Base de données :  `festival2`
---
-CREATE DATABASE IF NOT EXISTS `festival2` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
-USE `festival2`;
 
 -- --------------------------------------------------------
 
