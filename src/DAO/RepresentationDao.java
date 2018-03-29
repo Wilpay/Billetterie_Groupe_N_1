@@ -122,12 +122,13 @@ public class RepresentationDao {
      * @param id
      * @param nbDePlace 
      */
-    public static void updateNbPlace(int id, int nbDePlace) {
-        try (Connection conn = DriverManager.getConnection(Reader.readString("BDD_url"), Reader.readString("BDD_login"), Reader.readString("BDD_mdp"));
-                Statement stmt = conn.createStatement();) {
-            stmt.executeUpdate("UPDATE `Representation` SET `nbPlace`= " + nbDePlace + " WHERE `id` = " + id);
-        } catch (Exception e) {
-            throw new java.lang.Error("Failed To Execute Statement: \n\r"+e);
-        }
+    public static void updateNbPlace(int id, int nbDePlace) throws SQLException {
+        PreparedStatement pstmt;
+        Jdbc jdbc = Jdbc.getInstance();
+        
+        String requete = ("UPDATE `Representation` SET `nbPlace`= " + nbDePlace + " WHERE `id` = " + id);
+        pstmt = jdbc.getConnexion().prepareStatement(requete);
+        pstmt.executeUpdate();
+        
     }
 }

@@ -8,7 +8,11 @@ package billetterieg1;
 import Controller.CtrlPrincipal;
 import DAO.Jdbc;
 import Properties.Reader;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.sql.SQLException;
+import java.util.Properties;
 import javax.swing.JOptionPane;
 
 /**
@@ -20,9 +24,30 @@ public class BilletterieG1 {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
-        Jdbc.creer("com.mysql.jdbc.Driver", "jdbc:mysql:", "//localhost/", "festival2", "root", "joliverie");
-        //Jdbc.creer("com.mysql.jdbc.Driver", "jdbc:mysql://", "//localhost/", Reader.readString("BDD_name"), Reader.readString("BDD_login"), Reader.readString("BDD_mdp"));
+    public static void main(String[] args) throws IOException {
+        Properties prop = new Properties();
+	InputStream input = null;
+        
+        try {
+
+		input = new FileInputStream("src/Properties/properties.properties");
+
+		// load a properties file
+		prop.load(input);
+
+	} catch (IOException ex) {
+		ex.printStackTrace();
+	} finally {
+		if (input != null) {
+			try {
+				input.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+        
+        Jdbc.creer(prop.getProperty("jdbcDriver"), prop.getProperty("typeBdd"), prop.getProperty("localisation"), prop.getProperty("database"), prop.getProperty("dbuser"), prop.getProperty("dbpassword"));
         try {
             Jdbc.getInstance().connecter();
             CtrlPrincipal ctrlPrcp = new CtrlPrincipal();
