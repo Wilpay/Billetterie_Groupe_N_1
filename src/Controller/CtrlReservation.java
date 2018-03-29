@@ -13,6 +13,9 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import metier.Representation;
 
@@ -115,7 +118,11 @@ public class CtrlReservation implements WindowListener, MouseListener, ActionLis
     public void actionPerformed(ActionEvent ae) {
         if (ae.getSource() == vue.getjButtonCommander()) {
             int nbplace = representation.getNbPlace() - Integer.parseInt(vue.getjNbAchat().getSelectedItem().toString());
-            RepresentationDao.updateNbPlace(representation.getIdRep(), nbplace);
+            try {
+                RepresentationDao.updateNbPlace(representation.getIdRep(), nbplace);
+            } catch (SQLException ex) {
+                Logger.getLogger(CtrlReservation.class.getName()).log(Level.SEVERE, null, ex);
+            }
             JOptionPane.showMessageDialog(vue,
                     "Achat réussie. \nIl reste plus que " + nbplace + " place(s).",
                     "Reservation",
