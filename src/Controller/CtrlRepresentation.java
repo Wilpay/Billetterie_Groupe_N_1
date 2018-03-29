@@ -7,6 +7,8 @@ package Controller;
 
 import DAO.RepresentationDao;
 import View.vueRepresentation;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.WindowEvent;
@@ -20,7 +22,7 @@ import metier.Representation;
  *
  * @author Willy
  */
-public class CtrlRepresentation implements WindowListener, MouseListener{
+public class CtrlRepresentation implements WindowListener, MouseListener, ActionListener{
 
     private vueRepresentation vue = new vueRepresentation(); // LA VUE
     private List<Representation> lesRepresentations = null;
@@ -30,7 +32,7 @@ public class CtrlRepresentation implements WindowListener, MouseListener{
        this.ctrlPrincipal = ctrlPrincipal;
         // le contrôleur écoute la vue
         this.vue.addWindowListener(this);
-        this.vue.getjButtonMenuPrincipal().addMouseListener(this);
+        this.vue.getjButtonMenuPrincipal().addActionListener(this);
         this.vue.getjTableRepresentation().addMouseListener(this);
         // préparer l'état initial de la vue
         afficherLesRepresentations();
@@ -103,10 +105,7 @@ public class CtrlRepresentation implements WindowListener, MouseListener{
         int row = vue.getjTableRepresentation().getSelectedRow();
         ctrlPrincipal.showReservation(lesRepresentations.get(row).getIdRep());
         ctrlPrincipal.hideRepresentation();
-        if (me.getSource() == vue.getjButtonMenuPrincipal()) {
-            ctrlPrincipal.showMenu();
-            ctrlPrincipal.hideRepresentation();
-        }
+        
         
     }
 
@@ -125,5 +124,12 @@ public class CtrlRepresentation implements WindowListener, MouseListener{
     @Override
     public void mouseExited(MouseEvent me) {
     }
+
+    @Override
+    public void actionPerformed(ActionEvent ae) {
+        if (ae.getSource() == vue.getjButtonMenuPrincipal()) {
+            ctrlPrincipal.showMenu();
+            ctrlPrincipal.hideRepresentation();
+        }    }
     
 }
