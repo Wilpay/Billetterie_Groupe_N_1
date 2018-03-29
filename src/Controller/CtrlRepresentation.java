@@ -30,6 +30,7 @@ public class CtrlRepresentation implements WindowListener, MouseListener{
        this.ctrlPrincipal = ctrlPrincipal;
         // le contrôleur écoute la vue
         this.vue.addWindowListener(this);
+        this.vue.getjButtonMenuPrincipal().addMouseListener(this);
         this.vue.getjTableRepresentation().addMouseListener(this);
         // préparer l'état initial de la vue
         afficherLesRepresentations();
@@ -102,6 +103,11 @@ public class CtrlRepresentation implements WindowListener, MouseListener{
         int row = vue.getjTableRepresentation().getSelectedRow();
         ctrlPrincipal.showReservation(lesRepresentations.get(row).getIdRep());
         ctrlPrincipal.hideRepresentation();
+        if (me.getSource() == vue.getjButtonMenuPrincipal()) {
+            ctrlPrincipal.showMenu();
+            ctrlPrincipal.hideRepresentation();
+        }
+        
     }
 
     @Override
