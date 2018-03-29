@@ -25,6 +25,7 @@ public class CtrlMenu implements WindowListener, ActionListener{
         this.ctrlPrincipal = ctrlPrincipal;
         this.vue.addWindowListener(this);
         this.vue.getAfficherRep().addActionListener(this);
+        this.vue.getjButton1().addActionListener(this);
         this.ctrlPrincipal = ctrlPrincipal;
         
       
@@ -71,6 +72,10 @@ public class CtrlMenu implements WindowListener, ActionListener{
         if(ae.getSource().equals(this.vue.getAfficherRep())){
             ctrlPrincipal.showRepresentation();
             ctrlPrincipal.hideMenu();
-        }    }
+        }else if(ae.getSource().equals(this.vue.getjButton1())){
+            ctrlPrincipal.showIdentification();
+            ctrlPrincipal.hideMenu();
+        }    
+    }
     
 }

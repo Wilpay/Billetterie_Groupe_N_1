@@ -22,6 +22,24 @@ public class CtrlPrincipal implements WindowListener, ActionListener {
     CtrlMenu ctrlMenu;
     CtrlReservation ctrlReservation;
     CtrlAuthentification ctrlConnexion;
+    CtrlIdentification ctrlIdentification;
+    CtrlPanelMembre ctrlMembre;
+    
+    public void showMembre() {
+        ctrlMembre = new CtrlPanelMembre(this);
+        ctrlMembre.getVue().setVisible(true);
+    }
+    public void hideMembre() {
+        ctrlMembre.getVue().setVisible(false);
+    }
+    public void showIdentification() {
+        ctrlIdentification = new CtrlIdentification(this);
+        ctrlIdentification.getVue().setVisible(true);
+    }
+    
+    public void hideIdentification() {
+        ctrlIdentification.getVue().setVisible(false);
+    }
     
     public void showRepresentation() {
         ctrlRepresentation = new CtrlRepresentation(this);

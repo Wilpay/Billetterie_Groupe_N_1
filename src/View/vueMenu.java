@@ -81,6 +81,14 @@ public class vueMenu extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_AfficherRepActionPerformed
 
+    public JButton getjButton1() {
+        return jButton1;
+    }
+
+    public void setjButton1(JButton jButton1) {
+        this.jButton1 = jButton1;
+    }
+
     public JButton getAfficherRep() {
         return AfficherRep;
     }

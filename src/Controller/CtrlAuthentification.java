@@ -23,7 +23,7 @@ import javax.swing.JOptionPane;
  */
 public class CtrlAuthentification implements WindowListener, ActionListener {
     
-     private vueAuthentification vue = new vueAuthentification(); // LA VUE
+    private vueAuthentification vue = new vueAuthentification(); // LA VUE
     private CtrlPrincipal ctrlPrinc;
     
     public CtrlAuthentification(CtrlPrincipal ctrlPrinc) {
@@ -103,6 +103,7 @@ public class CtrlAuthentification implements WindowListener, ActionListener {
                 }
             } catch (NoSuchAlgorithmException ex) {
                 Logger.getLogger(CtrlAuthentification.class.getName()).log(Level.SEVERE, null, ex);
-            }    }
-}
+            } 
+        }
+    }
 }

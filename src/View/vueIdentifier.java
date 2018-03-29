@@ -5,6 +5,10 @@
  */
 package View;
 
+import javax.swing.JButton;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
+
 /**
  *
  * @author Willy
@@ -103,6 +107,30 @@ public class vueIdentifier extends javax.swing.JFrame {
     private void jButtonConnexionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConnexionActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonConnexionActionPerformed
+
+    public JButton getjButtonConnexion() {
+        return jButtonConnexion;
+    }
+
+    public void setjButtonConnexion(JButton jButtonConnexion) {
+        this.jButtonConnexion = jButtonConnexion;
+    }
+
+    public JPasswordField getjPassword() {
+        return jPassword;
+    }
+
+    public void setjPassword(JPasswordField jPassword) {
+        this.jPassword = jPassword;
+    }
+
+    public JTextField getjTextFieldLogin() {
+        return jTextFieldLogin;
+    }
+
+    public void setjTextFieldLogin(JTextField jTextFieldLogin) {
+        this.jTextFieldLogin = jTextFieldLogin;
+    }
 
     /**
      * @param args the command line arguments
