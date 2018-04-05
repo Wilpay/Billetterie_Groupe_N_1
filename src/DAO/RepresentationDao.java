@@ -10,19 +10,11 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import metier.Representation;
-import java.sql.Date;
-import java.sql.Time;
-import java.time.LocalDate;
-import java.time.LocalTime;
 import java.util.List;
 import metier.Lieu;
 import metier.Groupe;
 import DAO.LieuDao;
 import DAO.GroupeDao;
-import java.sql.Connection;
-import java.sql.Statement;
-import Properties.Reader;
-import java.sql.DriverManager;
 /**
  *
  * @author Willy

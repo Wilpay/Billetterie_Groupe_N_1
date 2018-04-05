@@ -7,7 +7,6 @@ package billetterieg1;
 
 import Controller.CtrlPrincipal;
 import DAO.Jdbc;
-import Properties.Reader;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -30,7 +29,7 @@ public class BilletterieG1 {
         
         try {
 
-		input = new FileInputStream("src/Properties/properties.properties");
+		input = new FileInputStream("properties.properties");
 
 		// load a properties file
 		prop.load(input);

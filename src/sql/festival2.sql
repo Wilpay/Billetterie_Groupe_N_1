@@ -6,7 +6,7 @@
 -- Généré le :  Mer 28 Mars 2018 à 17:26
 -- Version du serveur :  5.7.21-0ubuntu0.16.04.1
 -- Version de PHP :  7.0.28-0ubuntu0.16.04.1
-
+DROP DATABASE IF EXISTS festival2;
 --
 -- Base de données :  `festival2`
 --
@@ -361,3 +361,22 @@ ALTER TABLE `Representation`
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+SET FOREIGN_KEY_CHECKS=0;
+-- ----------------------------
+-- Table structure for `utilisateur`
+-- ----------------------------
+DROP TABLE IF EXISTS `utilisateur`;
+CREATE TABLE `utilisateur` (
+  `id` int(10) NOT NULL,
+  `login` varchar(50) DEFAULT NULL,
+  `password` varchar(255) DEFAULT NULL,
+  `nom` varchar(255) DEFAULT NULL,
+  `prenom` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- ----------------------------
+-- Records of utilisateur
+-- ----------------------------
+INSERT INTO `utilisateur` VALUES ('1', 'wtenaud', '123456', 'tenaud', 'willy');
+INSERT INTO `utilisateur` VALUES ('2', 'trouault', '123456', 'rouault', 'thomas');

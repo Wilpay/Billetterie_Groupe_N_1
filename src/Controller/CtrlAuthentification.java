@@ -5,14 +5,19 @@
  */
 package Controller;
 
-import Properties.Reader;
+//import Properties.Reader;
 import View.vueAuthentification;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -25,6 +30,9 @@ public class CtrlAuthentification implements WindowListener, ActionListener {
     
     private vueAuthentification vue = new vueAuthentification(); // LA VUE
     private CtrlPrincipal ctrlPrinc;
+    Properties prop = new Properties();
+    InputStream input;
+    
     
     public CtrlAuthentification(CtrlPrincipal ctrlPrinc) {
         // le contrôleur écoute la vue
@@ -32,7 +40,16 @@ public class CtrlAuthentification implements WindowListener, ActionListener {
         this.vue=vue;
         this.vue.addWindowListener((WindowListener) this);
         this.vue.getjConnexion().addActionListener((ActionListener) this);
-        this.ctrlPrinc = ctrlPrinc;        
+        this.ctrlPrinc = ctrlPrinc;     
+        
+        try {
+            input = new FileInputStream("properties.properties");
+            prop.load(input);
+        } catch (FileNotFoundException ex) {
+            JOptionPane.showMessageDialog(vue, "Erreur connexion Properties"+ex.getMessage());
+        } catch (IOException ex) {
+            JOptionPane.showMessageDialog(vue, "Erreur connexion Properties"+ex.getMessage());
+        }
     }
 
     // ACCESSEURS et MUTATEURS
@@ -95,7 +112,7 @@ public class CtrlAuthentification implements WindowListener, ActionListener {
                     sbMDP.append(String.format("%02x", b & 0xff));
                 }
                 
-                if(Reader.readString("Authentification_login").equals(sbLogin.toString()) && Reader.readString("Authentification_login").equals(sbMDP.toString())){
+                if(prop.getProperty("Authentification_login").equals(sbLogin.toString()) && prop.getProperty("Authentification_mdp").equals(sbMDP.toString())){
                     ctrlPrinc.showMenu();
                     ctrlPrinc.hideAuthentification();
                 }else {
