@@ -5,6 +5,7 @@
  */
 package Controller;
 
+import DAO.UtilisateurDao;
 import View.vueMembre;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -12,6 +13,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
+import metier.Utilisateur;
 
 /**
  *
@@ -21,14 +23,16 @@ public class CtrlPanelMembre implements ActionListener, WindowListener, MouseLis
     
     private vueMembre vue = new vueMembre(); // LA VUE
     private CtrlPrincipal ctrlPrinc;
-    
+    Utilisateur utilisateur;
     
     public CtrlPanelMembre(CtrlPrincipal ctrlPrinc) {
         // le contrôleur écoute la vue
         this.vue.addWindowListener(this);       
         this.vue=vue;
         this.vue.addWindowListener((WindowListener) this);
-        this.ctrlPrinc = ctrlPrinc;        
+        this.ctrlPrinc = ctrlPrinc; 
+        this.vue.getjReservation().addActionListener(this);
+        this.vue.getjMenu().addActionListener(this);
     }
 
     // ACCESSEURS et MUTATEURS
@@ -42,7 +46,13 @@ public class CtrlPanelMembre implements ActionListener, WindowListener, MouseLis
 
     @Override
     public void actionPerformed(ActionEvent ae) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if(ae.getSource() == vue.getjMenu()){
+            ctrlPrinc.hideMembre();
+            ctrlPrinc.showMenu();
+        }else if(ae.getSource() == vue.getjReservation()){
+            ctrlPrinc.showRepresentation();
+            ctrlPrinc.hideMembre();
+        }
     }
 
     @Override

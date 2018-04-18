@@ -24,6 +24,7 @@ public class CtrlPrincipal implements WindowListener, ActionListener {
     CtrlAuthentification ctrlConnexion;
     CtrlIdentification ctrlIdentification;
     CtrlPanelMembre ctrlMembre;
+    private String connecter = null;
     
     public void showMembre() {
         ctrlMembre = new CtrlPanelMembre(this);
@@ -52,6 +53,14 @@ public class CtrlPrincipal implements WindowListener, ActionListener {
     }
     public void hideMenu() {
         ctrlMenu.getVue().setVisible(false);
+    }
+    
+    public String getConnecter() {
+        return connecter;
+    }
+
+    public void setConnecter(String connecter) {
+        this.connecter = connecter;
     }
     public void hideRepresentation() {
         ctrlRepresentation.getVue().setVisible(false);

@@ -114,13 +114,18 @@ public class RepresentationDao {
      * @param id
      * @param nbDePlace 
      */
-    public static void updateNbPlace(int id, int nbDePlace) throws SQLException {
-        PreparedStatement pstmt;
+    public static int vendreRepresentation(int id,int nbDePlace) throws SQLException {
+        int nb;
         Jdbc jdbc = Jdbc.getInstance();
-        
-        String requete = ("UPDATE `Representation` SET `nbPlace`= " + nbDePlace + " WHERE `id` = " + id);
+        String requete;
+        ResultSet rs;
+        PreparedStatement pstmt;
+        requete = "UPDATE Representation SET nbPlace = ? WHERE ID = ?";
         pstmt = jdbc.getConnexion().prepareStatement(requete);
-        pstmt.executeUpdate();
-        
+        pstmt.setInt(1, nbDePlace);
+        pstmt.setInt(2, id);
+        nb = pstmt.executeUpdate();
+        System.out.println(nbDePlace + " places vendues");
+        return nb;
     }
 }

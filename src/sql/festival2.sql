@@ -6,7 +6,10 @@
 -- Généré le :  Mer 28 Mars 2018 à 17:26
 -- Version du serveur :  5.7.21-0ubuntu0.16.04.1
 -- Version de PHP :  7.0.28-0ubuntu0.16.04.1
-DROP DATABASE IF EXISTS festival2;
+
+CREATE USER IF NOT EXISTS 'groupe1'@'localhost' IDENTIFIED BY 'groupe1';
+GRANT ALL PRIVILEGES ON festival2.*TO 'groupe1'@'localhost';
+
 --
 -- Base de données :  `festival2`
 --
@@ -23,7 +26,6 @@ DROP TABLE IF EXISTS Representation;
 DROP TABLE IF EXISTS TypeChambre;
 
 
-GRANT ALL ON festival2 . * TO 'groupe1'@'localhost' IDENTIFIED BY 'groupe1';
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -365,8 +367,8 @@ SET FOREIGN_KEY_CHECKS=0;
 -- ----------------------------
 -- Table structure for `utilisateur`
 -- ----------------------------
-DROP TABLE IF EXISTS `utilisateur`;
-CREATE TABLE `utilisateur` (
+DROP TABLE IF EXISTS `Utilisateur`;
+CREATE TABLE `Utilisateur` (
   `id` int(10) NOT NULL,
   `login` varchar(50) DEFAULT NULL,
   `password` varchar(255) DEFAULT NULL,
@@ -378,5 +380,5 @@ CREATE TABLE `utilisateur` (
 -- ----------------------------
 -- Records of utilisateur
 -- ----------------------------
-INSERT INTO `utilisateur` VALUES ('1', 'wtenaud', '123456', 'tenaud', 'willy');
-INSERT INTO `utilisateur` VALUES ('2', 'trouault', '123456', 'rouault', 'thomas');
+INSERT INTO `Utilisateur` VALUES ('1', 'wtenaud', '123456', 'tenaud', 'willy');
+INSERT INTO `Utilisateur` VALUES ('2', 'trouault', '123456', 'rouault', 'thomas');

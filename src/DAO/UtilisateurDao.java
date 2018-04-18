@@ -38,5 +38,31 @@ public class UtilisateurDao {
         }
         return unUtilisateur;
     }
+     /**
+     * Extraction de tout les utilisateurs
+     * @return collection d'utilisateurs
+     * @throws SQLException 
+     */
+    public static List<Utilisateur> selectAll() throws SQLException {
+        List<Utilisateur> lesUtilisateurs = new ArrayList<Utilisateur>();
+        Utilisateur unUtilisateur;
+        ResultSet rs;
+        PreparedStatement pstmt;
+        Jdbc jdbc = Jdbc.getInstance();
+        // préparer la requête
+        String requete = "SELECT * FROM Utilisateur";
+        pstmt = jdbc.getConnexion().prepareStatement(requete);
+        rs = pstmt.executeQuery();
+        while (rs.next()) {
+            int idUtil = rs.getInt("id");
+            String login = rs.getString("login");
+            String password = rs.getString("password");
+            String nom = rs.getString("nom");
+            String prenom = rs.getString("prenom");
+            unUtilisateur = new Utilisateur(idUtil, login, password, nom, prenom);
+            lesUtilisateurs.add(unUtilisateur);
+        }
+        return lesUtilisateurs;
+    }
     
 }

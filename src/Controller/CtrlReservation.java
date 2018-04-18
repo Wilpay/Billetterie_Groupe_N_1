@@ -119,7 +119,7 @@ public class CtrlReservation implements WindowListener, MouseListener, ActionLis
         if (ae.getSource() == vue.getjButtonCommander()) {
             int nbplace = representation.getNbPlace() - Integer.parseInt(vue.getjNbAchat().getSelectedItem().toString());
             try {
-                RepresentationDao.updateNbPlace(representation.getIdRep(), nbplace);
+                RepresentationDao.vendreRepresentation(representation.getIdRep(), nbplace);
             } catch (SQLException ex) {
                 Logger.getLogger(CtrlReservation.class.getName()).log(Level.SEVERE, null, ex);
             }
